@@ -1,6 +1,7 @@
 <?php
 //課題１，２
 /*echo "入力された文字は:"."こんにちは";
+// aaaa
 
 //課題３
 $input = fgets(STDIN);
