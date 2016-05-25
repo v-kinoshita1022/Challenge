@@ -29,7 +29,7 @@ class base{
 
 //クラス人間
 class Human extends base{
-  private $hTable = 'name';
+  private $hTable = '';
 
   function __construct($hTable) {
       $this->name = $hTable;
@@ -52,7 +52,7 @@ class Human extends base{
    $catch = "select * from :human;";
    $sql = $catch;
    $query = $pdo -> prepare($sql);
-   $query = bindValue(':human', $human)
+   $query = bindValue(':human', $hTable)
    $query -> execute();
    $result = $query->fetchall(PDO::FETCH_ASSOC);
  }
@@ -64,7 +64,7 @@ class Human extends base{
 //クラス駅
 
 class Station extends base{
-  private $sTable = 'name';
+  private $sTable = '';
 
   function __construct($sTable) {
       $this->name = $sTable;
@@ -87,7 +87,7 @@ class Station extends base{
     $catch = "select * from :station;";
     $sql = $catch;
     $query = $pdo -> prepare($sql);
-    $query = bindValue(':station', $station);
+    $query = bindValue(':station', $sTation);
     $query -> execute();
     $result = $query->fetchall(PDO::FETCH_ASSOC);
   }
