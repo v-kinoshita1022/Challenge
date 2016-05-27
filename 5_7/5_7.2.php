@@ -6,7 +6,7 @@ session_start();
 $_SESSION['name'] = $name;
 $_SESSION['sex'] = $sex;
 $_SESSION['hoby'] = $hoby;
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="ja">
@@ -22,19 +22,16 @@ $_SESSION['hoby'] = $hoby;
     <p><?php echo '趣味:'.$hoby; ?></p>
 
 
-    <form action="" method="post"><!--おまけ-->
+    <form action="" method="post"><!--上記内容で送信-->
         <input type="hidden" name="name" value="<?php echo $name; ?>">
         <input type="hidden" name="sex" value="<?php echo $sex; ?>">
         <input type="hidden" name="hoby" value="<?php echo $hoby; ?>">
         <input type="submit" value="上記の内容で送信">
     </form>
     <a href="5_7.1.php">戻る</a>
-    <form action="" method="post"><!--おまけ-->
-        <input type="hidden" name="name" value="<?php echo $name; ?>">
-        <input type="hidden" name="sex" value="<?php echo $sex; ?>">
-        <input type="hidden" name="hoby" value="<?php echo $hoby; ?>">
-        <input type="submit" value="上記の内容で送信">
+
+
     </form>
-    
+
 </body>
 </html>
