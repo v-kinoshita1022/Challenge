@@ -60,8 +60,3 @@ $insert_query->execute();
 }
 
 }
-
-function error(){
-  echo '入力が正常に行われませんでした。<br>';
-  return_top();
-}
