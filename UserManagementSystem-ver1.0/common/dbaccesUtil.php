@@ -42,13 +42,12 @@ $insert_query->bindValue(':comment',$comment);
 $newDate = date("Y-m-d H:i:s");
 $insert_query->bindValue(':newDate',$newDate);
 
-try{
-//課題８
-// try{
-$insert_query->execute();
-//global $pdo;
-//SQLを実行
 
+
+//課題８　エラーハンドル
+try{
+//SQLを実行
+$insert_query->execute();
 
 }catch(PDOException $e) {
    echo '<h1>入力が正常に行われませんでした。</h1><br>';
