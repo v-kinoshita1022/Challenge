@@ -32,7 +32,6 @@
         $_SESSION['type'] = $post_type;
         $_SESSION['tell'] = $post_tell;
         $_SESSION['comment'] = $post_comment;
-        echo $_SESSION['name'];
     ?>
 
         <h1>登録確認画面</h1><br>

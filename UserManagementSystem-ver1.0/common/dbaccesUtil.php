@@ -4,6 +4,8 @@
 function connect2MySQL(){
     try{
         $pdo = new PDO('mysql:host=localhost;dbname=Challenge_db;charset=utf8','kinoshita','freedom1022');
+        $pdo->setAttribute(PDO::ATTR_ERRMODE,
+        PDO::ERRMODE_EXCEPTION);
         return $pdo;
 
     } catch (PDOException $e) {
@@ -13,15 +15,16 @@ function connect2MySQL(){
 }
 
 //課題７DBアクセス系の処理をここに切り離す
+//$insert_db = onnect2MySQL();
 function insert(){
  global $insert_db;
+
   //DBに全項目のある1レコードを登録するSQL
 $insert_sql = "NSERT INTO user_t(name,birthday,tell,type,comment,newDate)"
         . "VALUES(:name,:birthday,:tell,:type,:comment,:newDate)";
 
 //クエリとして用意
 $insert_query = $insert_db->prepare($insert_sql);
-
 //グローバルで無く引数で良かったとの話も。。。
  global $name;
  global $birthday;
@@ -39,16 +42,26 @@ $insert_query->bindValue(':comment',$comment);
 $newDate = date("Y-m-d H:i:s");
 $insert_query->bindValue(':newDate',$newDate);
 
-
-//課題８
 try{
+//課題８
+// try{
 $insert_query->execute();
+//global $pdo;
 //SQLを実行
-$pdo->setAttribute(PDO::ATTR_ERRMODE,
-PDO::ERRMODE_EXCEPION);
+
+
 }catch(PDOException $e) {
-    //ERROR_PROCEDURE();
-  echo 'error';
+   echo '<h1>入力が正常に行われませんでした。</h1><br>';
+   echo $e->getMessage().'<br><br>';
+   echo return_top();
+//エラー関数
+   exit;
 
+}
 
+}
+
+function error(){
+  echo '入力が正常に行われませんでした。<br>';
+  return_top();
 }
