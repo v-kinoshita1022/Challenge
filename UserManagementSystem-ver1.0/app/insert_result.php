@@ -27,7 +27,7 @@ $hidden = isset($_POST["hidden"])?$_POST["hidden"]:"";
 <body>
 
     <?php
-    echo "ssssss";
+
     $name = $_SESSION['name'];
     $birthday = $_SESSION['birthday'];
     $type = $_SESSION['type'];
@@ -38,6 +38,7 @@ $hidden = isset($_POST["hidden"])?$_POST["hidden"]:"";
     //db接続を確立
     $insert_db = connect2MySQL();
 
+    //課題７dbアクセス系を関数処理　→dbaccesUtil.php
     insert();
 
     //接続オブジェクトを初期化することでDB接続を切断
@@ -57,7 +58,10 @@ $hidden = isset($_POST["hidden"])?$_POST["hidden"]:"";
     自己紹介:<?php echo $comment;?><br>
     以上の内容で登録しました。<br>
 
-    <?php echo return_top(); ?>
+    <?php
+     require_once '../common/dbaccesUtil.php';
+     echo return_top();
+     ?>
 
 </body>
 

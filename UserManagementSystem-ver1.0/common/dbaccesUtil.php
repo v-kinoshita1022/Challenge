@@ -5,8 +5,9 @@ function connect2MySQL(){
     try{
         $pdo = new PDO('mysql:host=localhost;dbname=Challenge_db;charset=utf8','kinoshita','freedom1022');
         return $pdo;
+
     } catch (PDOException $e) {
-        ERROR_PROCEDURE()
+        //ERROR_PROCEDURE();
         die('接続に失敗しました。次記のエラーにより処理を中断します:'.$e->getMessage());
     }
 }
@@ -15,7 +16,7 @@ function connect2MySQL(){
 function insert(){
  global $insert_db;
   //DBに全項目のある1レコードを登録するSQL
-$insert_sql = "INSERT INTO user_t(name,birthday,tell,type,comment,newDate)"
+$insert_sql = "NSERT INTO user_t(name,birthday,tell,type,comment,newDate)"
         . "VALUES(:name,:birthday,:tell,:type,:comment,:newDate)";
 
 //クエリとして用意
@@ -38,9 +39,16 @@ $insert_query->bindValue(':comment',$comment);
 $newDate = date("Y-m-d H:i:s");
 $insert_query->bindValue(':newDate',$newDate);
 
-//SQLを実行
-$insert_query->execute();
 
+//課題８
+try{
+$insert_query->execute();
+//SQLを実行
+$pdo->setAttribute(PDO::ATTR_ERRMODE,
+PDO::ERRMODE_EXCEPION);
+}catch(PDOException $e) {
+    //ERROR_PROCEDURE();
+  echo 'error';
 
 
 }
